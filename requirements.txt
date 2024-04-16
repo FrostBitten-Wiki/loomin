@@ -1,0 +1,10 @@
+fastapi
+uvicorn
+jinja2
+httpx
+user-agents
+PyYAML
+rapidfuzz
+PyGithub
+ruamel.yaml
+markdown2

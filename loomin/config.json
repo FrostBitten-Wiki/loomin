@@ -1,0 +1,8 @@
+{
+    "local": false,
+    
+    "github": {
+        "owner": "githubowner",
+        "bot_gpg_key": "gpg_"
+    }
+}

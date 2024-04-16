@@ -16,10 +16,14 @@ app = FastAPI(
     redoc_url=None
 )
 
+## HOME
+
 @app.get("/")
 async def homepage():
     return "Homepage Here lol"
 
+## API 
+
 if __name__ == "__main__":
-    #                                           disable these when the backend is done
+    #                                           disable these when the backend is done or something
     run("main:app", host="0.0.0.0", port=69420, reload=True, reload_delay=5)

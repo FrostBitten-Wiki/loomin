@@ -1,15 +1,16 @@
-# GOOOOOOOOOOOOOAAAAAAAAAAALLLLLLLLLL!!! (s)
-# - new and cleaner api (and also document it properly ig)
-# - be able to STILL run on serverless functions (make it exclusively made for deta???)
-# - be able to manage edits by people online publicly (id assigned by IP? or randomly generated... maybe even masked ip...)
-# - better frontend (since i suck and lost the excalidraw board.......) (could also be modern ui or something)
-
 from fastapi import FastAPI, Request
 from fastapi.templating import Jinja2Templates
 from fastapi.responses import RedirectResponse, FileResponse, JSONResponse, HTMLResponse, Response
 from fastapi.staticfiles import StaticFiles
 
+from json import load
+
 from uvicorn import run
+from loomin.packages import jinki
+from loomin.custom.JinkiPostProcessors import PostProcessors
+
+with open("config.json", "r") as file:
+    config = load(file)
 
 app = FastAPI(
     docs_url=None,
@@ -17,13 +18,29 @@ app = FastAPI(
 )
 
 ## HOME
+## The homepage of the loomin wiki server. This homepage can be modified.
 
 @app.get("/")
-async def homepage():
-    return "Homepage Here lol"
+async def home():
+    return "Loomin Home HTML here"
 
-## API 
+## WIKI
+## i dont need to explain this
+
+@app.get("/wiki")
+async def wiki():
+    return "selection of wikis here (wikis.json)"
+
+@app.get("/wiki/{wiki}/{content:path}")
+async def wiki_content():
+    return "wiki shenanigans here"
+
+## ASSETS
+## Access assets from the github repository (no long paths)
+
+@app.get("/assets/{wiki}/{filename}")
+async def asset():
+    return "return asset now (use github api)"
 
 if __name__ == "__main__":
-    #                                           disable these when the backend is done or something
-    run("main:app", host="0.0.0.0", port=69420, reload=True, reload_delay=5)
+    run("main:app", host="0.0.0.0", port=8080, reload=True, reload_delay=5)

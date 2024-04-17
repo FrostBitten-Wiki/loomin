@@ -1,0 +1,15 @@
+{
+    "github": {
+        "owner": "githubowner",
+        "repository": "repository",
+        "bot_gpg_key": "gpg_"
+    },
+
+    "editing": {
+        "open": true,
+
+        "trustedUsers": [
+            1234567890
+        ]
+    }
+}
